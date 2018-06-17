@@ -3,3 +3,7 @@ __pycache__
 *.pyc
 geckodriver.log
 *.swp
+db.sqlite3
+geckodriver.log
+__pycache__
+*.save
