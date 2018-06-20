@@ -1,0 +1,17 @@
+<html>
+    <title>Quiz</title>
+    <body>
+        <h1><a href="/quiz">Quiz</a></h1>
+        <form method="POST" action="{% url 'quiz:results' %}">
+            {% for question in question_text %}
+                <h2>{{ question.question_text }}</h2>
+                <input type='radio' name="choice{{ forloop.counter }}" value="True">True<br>
+                <input type='radio' name="choice{{ forloop.counter }}" value="False">False<br>
+            {% endfor %}
+            <br>
+            <input type='submit' value='Submit'><br>
+            {% csrf_token %}
+        </form>
+        <br>
+    </body>
+</html>

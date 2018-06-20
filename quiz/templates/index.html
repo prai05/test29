@@ -1,12 +1,7 @@
 <html>
-    <title>quiz</title>
+    <title>Quiz</title>
     <body>
         <h1>Quiz</h1>
-        <h2>{{question.question_text}}</h2>
-        <from>
-            <input type='radio' name='true' id='ture' value="True"><br>
-            <input type='radio' name='false' id='false' value="False"><br>
-            <input type='submit' value='Submit'><br>
-        </from>
+        <a href="{% url 'quiz:question' %}">Start</a>
     </body>
 </html>

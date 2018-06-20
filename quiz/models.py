@@ -1,6 +1,6 @@
-#import datetime
+import datetime
 from django.db import models
-#from django.utils import timezone
+from django.utils import timezone
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -12,3 +12,5 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     corrected = models.BooleanField(default=False)
+    # def __str__(self):
+    #     return self.corrected
