@@ -3,17 +3,6 @@
         <title>Results</title>
     </head>
     <body>
-      {% for i in question_text %}
-      <h2>{{ i.question_text }}</h2>
-      <p>{{ i.corrected }}</p>
-      {% endfor %}
-      <p>{{ choice1.corrected }}</p>
-      <p>{{ choice2.corrected }}</p>
-      <p>{{ choice3.corrected }}</p>
-      <br>
-      <p>1 ={{ radio1 }}</p>
-      <p>2 ={{ radio2 }}</p>
-      <p>3 ={{ radio3 }}</p>
       <p>Results = &nbsp{{ point }} / {{ question_num }} </p>
       <a href="{% url 'quiz:question' %}">Quiz again?</a>
     </body>
