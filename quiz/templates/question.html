@@ -5,14 +5,14 @@
         <!-- form POST to results.views -->
         <form method="POST" action="{% url 'quiz:results' %}">
             {% for question in question_text %}
-                <h2>{{ question.question_text }}</h2>
+                <h2 name="question{{ forloop.counter }}">{{ question.question_text }}</h2>
 
                 <!-- get 'choice'+str(i+1) to check choice[i].corrected in models-->
                 <input type='radio' name="choice{{ forloop.counter }}" value="True">True<br>
                 <input type='radio' name="choice{{ forloop.counter }}" value="False">False<br>
             {% endfor %}
             <br>
-            <input type='submit' value='Submit'><br>
+            <input type='submit' name='submit' value='Submit'><br>
             {% csrf_token %}
         </form>
         <br>
