@@ -10,47 +10,46 @@ class NewVisitorTest(unittest.TestCase):
     def teatDown(self):
         self.browser.quit()
 
-    def test_can_start_a_list_and_retrieve_it_later(self):
-        # Prai go to homepage
+    def test_can_select_choice_for_question(self):
+        # ศรัณย์เข้าเว็บ http://localhost:8000
         self.browser.get('http://localhost:8000')
 
-        # page title
+        # ศรัณย์เห็น title Quiz
         self.assertIn('Quiz', self.browser.title)
 
-        # 1.Start
+        # ศรัณย์ กด Start link ไปหน้า http://localhost:8000/question/
         start = self.browser.find_element_by_link_text('Start')
         self.assertEqual(start.get_attribute('href'), 'http://localhost:8000/question/')
         start.click()
         time.sleep(1)
 
-        # 2.1+1=2?
-
+        # ศรัณย์ เห็นคำถามข้อแรก
         question_text1 = self.browser.find_element_by_name('question1').text
         self.assertIn('1+1=2?', question_text1)
 
-        # 3.True
+        # ศรัณย์ กดเลือก True
         choice1 = self.browser.find_element_by_tag_name('input')
         self.assertEqual(choice1.get_attribute('name'), 'choice1')
         choice1.click()
         time.sleep(1)
 
-        # 4.Submit
+        # ศรัณย์ กด Submit
         submit1 = self.browser.find_element_by_name('submit')
         self.assertEqual(submit1.get_attribute('value'), 'Submit')
         submit1.click()
 
-        # 5.Result
+        # ศรัณย์ เห็นคะแนน
         results = self.browser.find_element_by_tag_name('p').text
         self.assertIn('Results =  1 / 3', results)
         time.sleep(2)
 
-        # 6.Quiz again?
+        # ศรัณย์ กด Quiz again เพื่อย้อนกลับไปทำใหม่
         quiz_again = self.browser.find_element_by_link_text('Quiz again?')
         self.assertEqual(quiz_again.get_attribute('href'), 'http://localhost:8000/question/')
         quiz_again.click()
         time.sleep(1)
 
-        # 7.All True
+        # ศรัณย์ ตอบคำถามทุกข้อ
         choice1 = self.browser.find_element_by_name('choice1')
         self.assertEqual(choice1.get_attribute('value'), 'True')
         choice1.click()
@@ -72,14 +71,15 @@ class NewVisitorTest(unittest.TestCase):
         choice3.click()
         time.sleep(1)
 
+        # ศรัณย์ กด Submit
         submit2 = self.browser.find_element_by_name('submit')
         self.assertEqual(submit2.get_attribute('value'), 'Submit')
         submit2.click()
+        time.sleep(1)
 
-        # 5.Result
+        # ศรัณย์ เห็นคะแนน
         results = self.browser.find_element_by_tag_name('p').text
         self.assertIn('Results =  2 / 3', results)
-        #time.sleep(2)
 
 
         self.fail('Finish the test!')
